@@ -40,14 +40,14 @@ to render. You can also provide the ``isLoading`` prop that will dim the button
 and disable it to prevent accidental taps.
 
 ```javascript
-    <Button
-        style={{backgroundColor: '#3D5B96', height:60, borderRadius: 4, borderWidth: 1, borderColor: 'rgba(0,0,0,0.2)'}}
-        textStyle={{color: 'white', textAlign: 'center'}}
-        iconProps={{name: "facebook",size:25, color: "white"}}
-        iconStyle={{paddingHorizontal:20}}
-    >
-        Login with Facebook
-    </Button>
+<Button
+    style={{backgroundColor: '#3D5B96', height:60, borderRadius: 4, borderWidth: 1, borderColor: 'rgba(0,0,0,0.2)'}}
+    textStyle={{color: 'white', textAlign: 'center'}}
+    iconProps={{name: "facebook",size:25, color: "white"}}
+    iconStyle={{paddingHorizontal:20}}
+>
+    Login with Facebook
+</Button>
 ```    
 
 
