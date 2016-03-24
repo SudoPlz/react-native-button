@@ -1,14 +1,14 @@
 {
-  "name": "apsl-react-native-button",
-  "version": "2.4.2",
-  "description": "React Native button component with rounded corners.",
+  "name": "sp-react-native-iconbutton",
+  "version": "2.4.3",
+  "description": "A React Native button that can also have an `icon` within it through the `iconProps` property.",
   "main": "Button.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/APSL/react-native-button.git"
+    "url": "git+https://github.com/SudoPlz/sp-react-native-iconbutton.git"
   },
   "keywords": [
     "react-native",
@@ -18,10 +18,14 @@
     "react",
     "button"
   ],
-  "author": "Alvaro Medina Ballester",
+  "author":{
+    "name" : "Ioannis Kokkinidis",
+    "email" : "sudoplz@gmail.com",
+    "url" : "https://www.linkedin.com/in/sudoplz"
+  },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/APSL/react-native-button/issues"
+    "url": "https://github.com/SudoPlz/sp-react-native-iconbutton/issues"
   },
-  "homepage": "https://github.com/APSL/react-native-button#readme"
+  "homepage": "https://github.com/SudoPlz/sp-react-native-iconbutton#readme"
 }

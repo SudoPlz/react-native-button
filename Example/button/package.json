@@ -1,35 +1,12 @@
 {
-  "name": "sp-react-native-iconbutton",
-  "version": "2.4.3",
-  "description": "A React Native button that can also have an `icon` within it through the `iconProps` property.",
-  "main": "Button.js",
+  "name": "button",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node_modules/react-native/packager/packager.sh"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SudoPlz/sp-react-native-iconbutton.git"
-  },
-  "keywords": [
-    "react-native",
-    "ios",
-    "android",
-    "react-component",
-    "react",
-    "button"
-  ],
-  "author":{
-    "name" : "Ioannis Kokkinidis",
-    "email" : "sudoplz@gmail.com",
-    "url" : "https://www.linkedin.com/in/sudoplz"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/SudoPlz/sp-react-native-iconbutton/issues"
-  },
-  "homepage": "https://github.com/SudoPlz/sp-react-native-iconbutton#readme",
   "dependencies": {
-    "apsl-react-native-button": "^2.4.2",
+    "sp-react-native-iconbutton": "^2.4.3",
     "react-native": "^0.18.0"
   }
 }
