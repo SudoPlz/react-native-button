@@ -18,7 +18,7 @@ Renders a ``TouchableOpacity`` under iOS and a ``TouchableNativeFeedback`` under
 
 ## Install
 
-``apsl-react-native-button`` needs React Native 0.16 or higher.
+``sp-react-native-iconbutton`` needs React Native 0.16 or higher.
 
 Install the package:
 
