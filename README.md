@@ -60,7 +60,7 @@ and disable it to prevent accidental taps.
 | ``onPressOut`` | ``func`` | Function to execute when the ``onPressOut`` event is triggered. |
 | ``onLongPress`` | ``func`` | Function to execute when the ``onLongPress`` event is triggered. |
 | ``iconStyle`` | ``ViewStylePropTypes`` | The StyleSheet to apply to the inner button text. |
-| ``iconProps`` | ``Object`` | The properties to pass to `react-native-vector-icons` |
+| ``iconProps`` | ``Object`` | The properties to pass to your icon. You can pass [any prop](https://github.com/oblador/react-native-vector-icons#properties-1) that you could pass on `react-native-vector-icons` |
 | ``textStyle`` | ``TextStylePropTypes`` | The StyleSheet to apply to the inner button text. |
 | ``disabledStyle`` | ``TextStylePropTypes`` | The StyleSheet to apply when disabled. |
 | ``children`` | ``string`` | The ``string`` to render as the text button. |
