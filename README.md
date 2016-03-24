@@ -1,6 +1,13 @@
-# apsl-react-native-button
+# sp-react-native-iconbutton
 
-A React Native button component customizable via ``style`` props.
+A React Native button that can also have an `icon` within it through the `iconProps` property.
+
+It works both WITH an icon AND without so it can cover all your button needs.
+
+<img src="https://app.box.com/representation/file_version_60871688245/image_2048/1.png?shared_name=6u2psds0k555fxstpkpaogvaceetqj0a" >
+
+
+
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/wiki/APSL/react-native-button/button.png" alt="Button component screenshot" width="400">
@@ -16,13 +23,13 @@ Renders a ``TouchableOpacity`` under iOS and a ``TouchableNativeFeedback`` under
 Install the package:
 
 ```bash
-$ npm i apsl-react-native-button --save
+$ npm i sp-react-native-iconbutton --save
 ```
 
 Import the ``Button`` component:
 
 ```javascript
-import Button from 'apsl-react-native-button'
+import Button from 'sp-react-native-iconbutton'
 ```
 
 ## Usage
@@ -33,10 +40,16 @@ to render. You can also provide the ``isLoading`` prop that will dim the button
 and disable it to prevent accidental taps.
 
 ```javascript
-<Button style={{backgroundColor: 'red'}} textStyle={{fontSize: 18}}>
-  Hello!
-</Button>
-```
+    <Button
+        style={{backgroundColor: '#3D5B96', height:60, borderRadius: 4, borderWidth: 1, borderColor: 'rgba(0,0,0,0.2)'}}
+        textStyle={{color: 'white', textAlign: 'center'}}
+        iconProps={{name: "facebook",size:25, color: "white"}}
+        iconStyle={{paddingHorizontal:20}}
+    >
+        Login with Facebook
+    </Button>
+```    
+
 
 ## API
 
@@ -46,6 +59,8 @@ and disable it to prevent accidental taps.
 | ``onPressIn`` | ``func`` | Function to execute when the ``onPressIn`` event is triggered. |
 | ``onPressOut`` | ``func`` | Function to execute when the ``onPressOut`` event is triggered. |
 | ``onLongPress`` | ``func`` | Function to execute when the ``onLongPress`` event is triggered. |
+| ``iconStyle`` | ``ViewStylePropTypes`` | The StyleSheet to apply to the inner button text. |
+| ``iconProps`` | ``Object`` | The properties to pass to `react-native-vector-icons` |
 | ``textStyle`` | ``TextStylePropTypes`` | The StyleSheet to apply to the inner button text. |
 | ``disabledStyle`` | ``TextStylePropTypes`` | The StyleSheet to apply when disabled. |
 | ``children`` | ``string`` | The ``string`` to render as the text button. |
@@ -54,11 +69,11 @@ and disable it to prevent accidental taps.
 | ``activityIndicatorColor`` | ``string`` | Sets the button of the ``ActivityIndicatorIOS`` or ``ProgressBarAndroid`` in the loading state. |
 | ``background`` | ``TouchableNativeFeedback.propTypes.background`` | **Android only**. The background prop of ``TouchableNativeFeedback``. |
 
-Check the included example for more options.
 
-## Similar projects
 
-[James Ide](https://github.com/ide/)'s ``react-native-button`` https://github.com/ide/react-native-button/
+
+
+
 
 ## License
 

@@ -5,6 +5,18 @@ export default class Example extends React.Component {
   render () {
     return (
       <View style={styles.container}>
+        
+
+        
+        <Button
+            style={{backgroundColor: '#3D5B96', height:60, borderRadius: 4, borderWidth: 1, borderColor: 'rgba(0,0,0,0.2)'}}
+            textStyle={{color: 'white', textAlign: 'center'}}
+            iconProps={{name: "facebook",size:25, color: "white"}}
+            iconStyle={{paddingHorizontal:20}}
+        >
+            Login with Facebook
+        </Button>
+
         <Button
           background={(Platform.OS === 'android') ? TouchableNativeFeedback.Ripple('#f39c12', true) : undefined}
           style={styles.buttonStyle} textStyle={styles.textStyle}
@@ -13,6 +25,7 @@ export default class Example extends React.Component {
           }}>
           Hello
         </Button>
+
         <Button
           style={styles.buttonStyle1} textStyle={styles.textStyle}
           onPress={() => {
@@ -20,6 +33,7 @@ export default class Example extends React.Component {
           }}>
           Hello
         </Button>
+
         <Button
           style={styles.buttonStyle2} textStyle={styles.textStyle}
           onPress={() => {
@@ -27,6 +41,7 @@ export default class Example extends React.Component {
           }}>
           Hello
         </Button>
+
         <Button
           style={styles.buttonStyle3} textStyle={styles.textStyle}
           onPress={() => {
@@ -34,6 +49,7 @@ export default class Example extends React.Component {
           }}>
           Hello
         </Button>
+
         <Button
           style={styles.buttonStyle4} textStyle={styles.textStyle}
           onPress={() => {
@@ -41,6 +57,7 @@ export default class Example extends React.Component {
           }}>
           Hello
         </Button>
+
         <Button
           style={styles.buttonStyle5} textStyle={styles.textStyle}
           onPress={() => {
@@ -48,6 +65,7 @@ export default class Example extends React.Component {
           }}>
           Hello
         </Button>
+
         <Button
           style={styles.buttonStyle6} textStyle={styles.textStyle}
           onPress={() => {
@@ -55,6 +73,7 @@ export default class Example extends React.Component {
           }}>
           Hello
         </Button>
+
         <Button
           style={styles.buttonStyle7} textStyle={styles.textStyle6}
           onPress={() => {
@@ -62,6 +81,7 @@ export default class Example extends React.Component {
           }}>
           Hello
         </Button>
+
         <Button
           isLoading={true}
           style={styles.buttonStyle7} textStyle={styles.textStyle6}
@@ -70,9 +90,13 @@ export default class Example extends React.Component {
           }}>
           Hello
         </Button>
+
         <Button disabledStyle={styles.buttonStyle8} isDisabled={true} textStyle={styles.textStyle8}>
           Disabled
         </Button>
+
+
+
       </View>
     )
   }

@@ -12,10 +12,13 @@ var {
   TouchableNativeFeedback,
   Platform
 } = React;
-
+var Icon = require('react-native-vector-icons/FontAwesome');
 var Button = React.createClass({
   propTypes: Object.assign({},
     {
+
+      iconProps: PropTypes.object,
+      iconStyle: View.propTypes.style,
       textStyle: Text.propTypes.style,
       disabledStyle: Text.propTypes.style,
       children: PropTypes.string.isRequired,
@@ -46,11 +49,22 @@ var Button = React.createClass({
         />
       );
     }
+
     return (
       <Text style={[styles.textButton, this.props.textStyle]}>
         {this.props.children}
       </Text>
     );
+
+  },
+
+
+  _renderIconIfNeeded: function(){
+    if(!!this.props.iconProps){
+      return <Icon style={[styles.btnIcon, this.props.iconStyle]} {...this.props.iconProps}></Icon>;
+    }else{
+      return <View></View>;
+    }
   },
 
   _renderInnerTextiOS: function () {
@@ -64,6 +78,7 @@ var Button = React.createClass({
         />
       );
     }
+
     return (
       <Text style={[styles.textButton, this.props.textStyle]}>
         {this.props.children}
@@ -99,24 +114,66 @@ var Button = React.createClass({
         });
         return (
           <TouchableNativeFeedback {...touchableProps}>
-            <Text style={[styles.button, this.props.style]}>
-              {this._renderInnerTextAndroid()}
-            </Text>
+            <View style={styles.touchableContainerView} >
+              {this._renderIconIfNeeded()}
+              <Text style={[styles.button, this.props.style]}>
+                {this._renderInnerTextAndroid()}
+              </Text>
+            </View>
           </TouchableNativeFeedback>
         )
       } else {
         return (
           <TouchableOpacity {...touchableProps}
             style={[styles.button, this.props.style]}>
-            {this._renderInnerTextiOS()}
+            <View style={styles.touchableContainerView} >
+
+
+
+
+                <View style={styles.rowContainer}>
+                  <View style={styles.rowItem}>
+                    {this._renderIconIfNeeded()}
+                  </View>
+                  <View style={styles.rowItem}>
+                    {this._renderInnerTextiOS()}
+                  </View>
+                </View>
+
+
+
+
+            </View>
           </TouchableOpacity>
         );
       }
     }
   }
-});
 
+
+
+
+});
 var styles = StyleSheet.create({
+  touchableContainerView:{
+    flex:1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    // backgroundColor:'black'
+  },
+  rowContainer:{
+    flex: 1,
+    flexDirection: 'column'
+  },
+  rowItem:{
+    flex: 1
+  },
+
+  btnIcon:{
+    // backgroundColor: 'red',
+    position: 'absolute',
+    paddingHorizontal: 10
+  },
   button: {
     height: 44,
     flexDirection: 'row',
@@ -126,9 +183,11 @@ var styles = StyleSheet.create({
     alignSelf: 'stretch',
     justifyContent: 'center',
   },
+
   textButton: {
     fontSize: 18,
-    alignSelf: 'center',
+    alignSelf: 'center'
+    // backgroundColor: 'yellow'
   },
   spinner: {
     alignSelf: 'center',
