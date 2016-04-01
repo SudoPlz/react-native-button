@@ -21,7 +21,7 @@ var Button = React.createClass({
       iconStyle: View.propTypes.style,
       textStyle: Text.propTypes.style,
       disabledStyle: Text.propTypes.style,
-      children: PropTypes.string.isRequired,
+      children: PropTypes.string,
       isLoading: PropTypes.bool,
       isDisabled: PropTypes.bool,
       activityIndicatorColor: PropTypes.string,
@@ -50,13 +50,26 @@ var Button = React.createClass({
       );
     }
 
-    return (
-      <Text style={[styles.textButton, this.props.textStyle]}>
-        {this.props.children}
-      </Text>
-    );
+    
+    return _renderTextIfNeeded();
 
   },
+
+  _renderTextIfNeeded: function(){
+  	if(!!this.props.children){
+    	return (
+		  <Text style={[styles.textButton, this.props.textStyle]}>
+		    {this.props.children}
+		  </Text>
+		);	
+    }else{
+    	return (
+		  <View></View>
+		);	
+    }
+  }
+
+
 
 
   _renderIconIfNeeded: function(){
@@ -79,11 +92,7 @@ var Button = React.createClass({
       );
     }
 
-    return (
-      <Text style={[styles.textButton, this.props.textStyle]}>
-        {this.props.children}
-      </Text>
-    );
+    return _renderTextIfNeeded();
   },
 
   _renderInnerText: function () {
