@@ -1,0 +1,108 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/nvm/0.26.1/versions/node/v5.9.1/bin/node',
+1 verbose cli   '/usr/local/opt/nvm/versions/node/v5.9.1/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@3.7.3
+3 info using node@v5.9.1
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/Dynopia/tmp/sp-react-native-iconbutton',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/Dynopia/.npm/sp-react-native-iconbutton/2.4.4/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/Dynopia/.npm correctMkdir not in flight; initializing
+10 info lifecycle sp-react-native-iconbutton@2.4.4~prepublish: sp-react-native-iconbutton@2.4.4
+11 silly lifecycle sp-react-native-iconbutton@2.4.4~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/Dynopia/.npm/sp-react-native-iconbutton/2.4.4/package.tgz',
+12 verbose tar pack   '/Users/Dynopia/tmp/sp-react-native-iconbutton' ]
+13 verbose tarball /Users/Dynopia/.npm/sp-react-native-iconbutton/2.4.4/package.tgz
+14 verbose folder /Users/Dynopia/tmp/sp-react-native-iconbutton
+15 verbose addLocalTarball adding from inside cache /Users/Dynopia/.npm/sp-react-native-iconbutton/2.4.4/package.tgz
+16 verbose correctMkdir /Users/Dynopia/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd sp-react-native-iconbutton@2.4.4
+18 verbose afterAdd /Users/Dynopia/.npm/sp-react-native-iconbutton/2.4.4/package/package.json not in flight; writing
+19 verbose correctMkdir /Users/Dynopia/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /Users/Dynopia/.npm/sp-react-native-iconbutton/2.4.4/package/package.json written
+21 silly publish { name: 'sp-react-native-iconbutton',
+21 silly publish   version: '2.4.4',
+21 silly publish   description: 'A React Native button that can also have an `icon` within it through the `iconProps` property.',
+21 silly publish   main: 'Button.js',
+21 silly publish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/SudoPlz/sp-react-native-iconbutton.git' },
+21 silly publish   keywords:
+21 silly publish    [ 'react-native',
+21 silly publish      'ios',
+21 silly publish      'android',
+21 silly publish      'react-component',
+21 silly publish      'react',
+21 silly publish      'button' ],
+21 silly publish   author:
+21 silly publish    { name: 'Ioannis Kokkinidis',
+21 silly publish      email: 'sudoplz@gmail.com',
+21 silly publish      url: 'https://www.linkedin.com/in/sudoplz' },
+21 silly publish   license: 'MIT',
+21 silly publish   bugs: { url: 'https://github.com/SudoPlz/sp-react-native-iconbutton/issues' },
+21 silly publish   homepage: 'https://github.com/SudoPlz/sp-react-native-iconbutton#readme',
+21 silly publish   readme: '# sp-react-native-iconbutton\n\nA React Native button that can also have an `icon` within it through the `iconProps` property.\n\nIt works both WITH an icon AND without so it can cover all your button needs.\n\n<img src="https://app.box.com/representation/file_version_60871688245/image_2048/1.png?shared_name=6u2psds0k555fxstpkpaogvaceetqj0a" >\n\n\n\n\n<p align="center">\n<img src="https://raw.githubusercontent.com/wiki/APSL/react-native-button/button.png" alt="Button component screenshot" width="400">\n<img src="https://raw.githubusercontent.com/wiki/APSL/react-native-button/and.png" alt="Android Button component screenshot" width="400">\n</p>\n\nRenders a ``TouchableOpacity`` under iOS and a ``TouchableNativeFeedback`` under Android.\n\n## Install\n\n``sp-react-native-iconbutton`` needs React Native 0.16 or higher.\n\nInstall the package:\n\n```bash\n$ npm i sp-react-native-iconbutton --save\n```\n\nImport the ``Button`` component:\n\n```javascript\nimport Button from \'sp-react-native-iconbutton\'\n```\n\n## Usage\n\nProvide ``TouchableWithoutFeedback``\' props to the component (including ``style``),\n``textStyle``\'s ``StyleSheet`` to customize the inner text and a children node\nto render. You can also provide the ``isLoading`` prop that will dim the button\nand disable it to prevent accidental taps.\n\n```javascript\n<Button\n    style={{backgroundColor: \'#3D5B96\', height:60, borderRadius: 4, borderWidth: 1, borderColor: \'rgba(0,0,0,0.2)\'}}\n    textStyle={{color: \'white\', textAlign: \'center\'}}\n    iconProps={{name: "facebook",size:25, color: "white"}}\n    iconStyle={{paddingHorizontal:20}}\n>\n    Login with Facebook\n</Button>\n```    \n\n\n## API\n\n| Prop | Type | Description |\n|------|------|-------------|\n| ``onPress`` | ``func`` | Function to execute when the ``onPress`` event is triggered. |\n| ``onPressIn`` | ``func`` | Function to execute when the ``onPressIn`` event is triggered. |\n| ``onPressOut`` | ``func`` | Function to execute when the ``onPressOut`` event is triggered. |\n| ``onLongPress`` | ``func`` | Function to execute when the ``onLongPress`` event is triggered. |\n| ``iconStyle`` | ``ViewStylePropTypes`` | The StyleSheet to apply to the inner button text. |\n| ``iconProps`` | ``Object`` | The properties to pass to your icon. You can pass [any prop](https://github.com/oblador/react-native-vector-icons#properties-1) that you could pass on `react-native-vector-icons` |\n| ``textStyle`` | ``TextStylePropTypes`` | The StyleSheet to apply to the inner button text. |\n| ``disabledStyle`` | ``TextStylePropTypes`` | The StyleSheet to apply when disabled. |\n| ``children`` | ``string`` | The ``string`` to render as the text button. |\n| ``isLoading`` | ``bool`` | Renders an inactive state dimmed button with a spinner if ``true``. |\n| ``isDisabled`` | ``bool`` | Renders an inactive state dimmed button if ``true``. |\n| ``activityIndicatorColor`` | ``string`` | Sets the button of the ``ActivityIndicatorIOS`` or ``ProgressBarAndroid`` in the loading state. |\n| ``background`` | ``TouchableNativeFeedback.propTypes.background`` | **Android only**. The background prop of ``TouchableNativeFeedback``. |\n\n\n\n\n\n\n\n## License\n\nMIT.\n',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: '333f591c52fdee785c9162c9a1fd96e509d45475',
+21 silly publish   _id: 'sp-react-native-iconbutton@2.4.4',
+21 silly publish   _shasum: 'da4fe5eb328357be238a9e6d95aff16c289f18f2',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name sp-react-native-iconbutton
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry uri https://registry.npmjs.org/sp-react-native-iconbutton
+27 verbose publish registryBase https://registry.npmjs.org/
+28 silly publish uploading /Users/Dynopia/.npm/sp-react-native-iconbutton/2.4.4/package.tgz
+29 verbose request uri https://registry.npmjs.org/sp-react-native-iconbutton
+30 verbose request sending authorization for write operation
+31 info attempt registry request try #1 at 5:01:56 PM
+32 verbose request using bearer token for auth
+33 verbose request id 609bc5bf870d33a0
+34 http request PUT https://registry.npmjs.org/sp-react-native-iconbutton
+35 http 403 https://registry.npmjs.org/sp-react-native-iconbutton
+36 verbose headers { 'content-type': 'application/json',
+36 verbose headers   'cache-control': 'max-age=300',
+36 verbose headers   'content-length': '95',
+36 verbose headers   'accept-ranges': 'bytes',
+36 verbose headers   date: 'Fri, 01 Apr 2016 14:01:59 GMT',
+36 verbose headers   via: '1.1 varnish',
+36 verbose headers   connection: 'keep-alive',
+36 verbose headers   'x-served-by': 'cache-ams4121-AMS',
+36 verbose headers   'x-cache': 'MISS',
+36 verbose headers   'x-cache-hits': '0',
+36 verbose headers   'x-timer': 'S1459519318.132474,VS0,VE1002' }
+37 verbose request invalidating /Users/Dynopia/.npm/registry.npmjs.org/sp-react-native-iconbutton on PUT
+38 error publish Failed PUT 403
+39 verbose stack Error: "You cannot publish over the previously published version 2.4.4." : sp-react-native-iconbutton
+39 verbose stack     at makeError (/usr/local/Cellar/nvm/0.26.1/versions/node/v5.9.1/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+39 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/Cellar/nvm/0.26.1/versions/node/v5.9.1/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+39 verbose stack     at Request._callback (/usr/local/Cellar/nvm/0.26.1/versions/node/v5.9.1/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+39 verbose stack     at Request.self.callback (/usr/local/Cellar/nvm/0.26.1/versions/node/v5.9.1/lib/node_modules/npm/node_modules/request/request.js:199:22)
+39 verbose stack     at emitTwo (events.js:100:13)
+39 verbose stack     at Request.emit (events.js:185:7)
+39 verbose stack     at Request.<anonymous> (/usr/local/Cellar/nvm/0.26.1/versions/node/v5.9.1/lib/node_modules/npm/node_modules/request/request.js:1036:10)
+39 verbose stack     at emitOne (events.js:95:20)
+39 verbose stack     at Request.emit (events.js:182:7)
+39 verbose stack     at IncomingMessage.<anonymous> (/usr/local/Cellar/nvm/0.26.1/versions/node/v5.9.1/lib/node_modules/npm/node_modules/request/request.js:963:12)
+40 verbose statusCode 403
+41 verbose pkgid sp-react-native-iconbutton
+42 verbose cwd /Users/Dynopia/tmp/sp-react-native-iconbutton
+43 error Darwin 15.4.0
+44 error argv "/usr/local/Cellar/nvm/0.26.1/versions/node/v5.9.1/bin/node" "/usr/local/opt/nvm/versions/node/v5.9.1/bin/npm" "publish"
+45 error node v5.9.1
+46 error npm  v3.7.3
+47 error code E403
+48 error "You cannot publish over the previously published version 2.4.4." : sp-react-native-iconbutton
+49 error If you need help, you may report this error at:
+49 error     <https://github.com/npm/npm/issues>
+50 verbose exit [ 1, true ]
