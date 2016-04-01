@@ -1,6 +1,6 @@
 {
   "name": "sp-react-native-iconbutton",
-  "version": "2.4.5",
+  "version": "2.4.6",
   "description": "A React Native button that can also have an `icon` within it through the `iconProps` property.",
   "main": "Button.js",
   "scripts": {
