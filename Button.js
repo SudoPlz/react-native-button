@@ -92,7 +92,7 @@ var Button = React.createClass({
       );
     }
 
-    return _renderTextIfNeeded();
+    return this._renderTextIfNeeded();
   },
 
   _renderInnerText: function () {
