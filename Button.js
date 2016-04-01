@@ -67,7 +67,7 @@ var Button = React.createClass({
 		  <View></View>
 		);	
     }
-  }
+  },
 
 
 
