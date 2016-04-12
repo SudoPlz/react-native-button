@@ -118,17 +118,24 @@ var Button = React.createClass({
         onLongPress: this.props.onLongPress
       };
       if (Button.isAndroid) {
+        console.log("@@@ COLOR IS: "+JSON.stringify(this.props.style))
         touchableProps = Object.assign(touchableProps, {
           background: this.props.background || TouchableNativeFeedback.SelectableBackground()
         });
         return (
-          <TouchableNativeFeedback {...touchableProps}>
-            <View style={styles.touchableContainerView} >
-              {this._renderIconIfNeeded()}
-              <Text style={[styles.button, this.props.style]}>
-                {this._renderInnerTextAndroid()}
-              </Text>
-            </View>
+          <TouchableNativeFeedback {...touchableProps} >
+            <View style={[styles.button, this.props.style]}>
+              <View style={styles.touchableContainerView} >
+                <View style={styles.rowContainer}>
+                  <View style={styles.rowItem}>
+                    {this._renderIconIfNeeded()}
+                  </View>
+                  <View style={styles.rowItem}>
+                    {this._renderInnerTextAndroid()}
+                  </View>
+                </View>
+              </View>
+            </View> 
           </TouchableNativeFeedback>
         )
       } else {
@@ -136,10 +143,6 @@ var Button = React.createClass({
           <TouchableOpacity {...touchableProps}
             style={[styles.button, this.props.style]}>
             <View style={styles.touchableContainerView} >
-
-
-
-
                 <View style={styles.rowContainer}>
                   <View style={styles.rowItem}>
                     {this._renderIconIfNeeded()}
@@ -148,10 +151,6 @@ var Button = React.createClass({
                     {this._renderInnerTextiOS()}
                   </View>
                 </View>
-
-
-
-
             </View>
           </TouchableOpacity>
         );
