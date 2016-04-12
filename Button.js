@@ -51,21 +51,21 @@ var Button = React.createClass({
     }
 
     
-    return _renderTextIfNeeded();
+    return this._renderTextIfNeeded();
 
   },
 
   _renderTextIfNeeded: function(){
-  	if(!!this.props.children){
-    	return (
-		  <Text style={[styles.textButton, this.props.textStyle]}>
-		    {this.props.children}
-		  </Text>
-		);	
+    if(!!this.props.children){
+      return (
+      <Text style={[styles.textButton, this.props.textStyle]}>
+        {this.props.children}
+      </Text>
+    );  
     }else{
-    	return (
-		  <View></View>
-		);	
+      return (
+      <View></View>
+    );  
     }
   },
 
