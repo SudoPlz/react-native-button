@@ -118,7 +118,6 @@ var Button = React.createClass({
         onLongPress: this.props.onLongPress
       };
       if (Button.isAndroid) {
-        console.log("@@@ COLOR IS: "+JSON.stringify(this.props.style))
         touchableProps = Object.assign(touchableProps, {
           background: this.props.background || TouchableNativeFeedback.SelectableBackground()
         });
