@@ -74,7 +74,7 @@ var Button = React.createClass({
 
   _renderIconIfNeeded: function(styles){
     if(!!this.props.iconProps){
-      return <Icon style={[styles.btnIcon, this.props.iconStyle]} {...this.props.iconProps}></Icon>;
+      return <View style={styles.btnIcon}><Icon style={this.props.iconStyle} {...this.props.iconProps}></Icon></View>;
     }else{
       return <View></View>;
     }
@@ -122,8 +122,8 @@ var Button = React.createClass({
       },
       rowItem:{
         flex: 1,
-        width: !!this.props.children?null:iconSize,
-        height: !!this.props.children?null:iconSize,
+        width: !!this.props.children?null:iconSize*2,
+        height: !!this.props.children?null:iconSize*2,
         justifyContent: 'center'
       },
 
