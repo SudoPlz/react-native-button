@@ -16,9 +16,10 @@ var Icon = require('react-native-vector-icons/FontAwesome');
 var Button = React.createClass({
   propTypes: Object.assign({},
     {
-
+      customIcon: PropTypes.func,
       iconProps: PropTypes.object,
       iconStyle: View.propTypes.style,
+      iconContainerStyle: View.propTypes.style,
       textStyle: Text.propTypes.style,
       disabledStyle: Text.propTypes.style,
       children: PropTypes.string,
@@ -73,8 +74,10 @@ var Button = React.createClass({
 
 
   _renderIconIfNeeded: function(styles){
-    if(!!this.props.iconProps){
-      return <View style={styles.btnIcon}><Icon style={this.props.iconStyle} {...this.props.iconProps}></Icon></View>;
+    if(!!this.props.customIcon){
+      return <View style={[styles.btnIcon, this.props.iconContainerStyle]}>{this.props.customIcon()}</View>;
+    }else if(!!this.props.iconProps){
+      return <View style={[styles.btnIcon, this.props.iconContainerStyle]}><Icon style={this.props.iconStyle} {...this.props.iconProps}></Icon></View>;
     }else{
       return <View></View>;
     }
