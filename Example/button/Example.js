@@ -1,4 +1,5 @@
-import React, { View, StyleSheet, TouchableNativeFeedback, Platform } from 'react-native'
+import React from 'react';
+import {View, StyleSheet, TouchableNativeFeedback, Platform} from 'react-native';
 import Button from 'apsl-react-native-button'
 
 export default class Example extends React.Component {

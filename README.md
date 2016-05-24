@@ -59,8 +59,10 @@ and disable it to prevent accidental taps.
 | ``onPressIn`` | ``func`` | Function to execute when the ``onPressIn`` event is triggered. |
 | ``onPressOut`` | ``func`` | Function to execute when the ``onPressOut`` event is triggered. |
 | ``onLongPress`` | ``func`` | Function to execute when the ``onLongPress`` event is triggered. |
-| ``iconStyle`` | ``ViewStylePropTypes`` | The StyleSheet to apply to the inner button text. |
-| ``iconProps`` | ``Object`` | The properties to pass to your icon. You can pass [any prop](https://github.com/oblador/react-native-vector-icons#properties-1) that you could pass on `react-native-vector-icons` |
+| ``customIcon`` | ``func`` | A function that returns a custom React element that will serve as the icon. (If you use that, you should NOT use `iconProps` or `iconStyle`) |
+| ``iconContainerStyle`` | ``ViewStylePropTypes`` | The StyleSheet to apply to the view that contains our icon be it a custom icon or a default (FontAwesome) icon. |
+| ``iconStyle`` | ``ViewStylePropTypes`` | The StyleSheet to apply to the inner button text. (If you use that, you should NOT use `customIcon`) |
+| ``iconProps`` | ``Object`` | If you pass iconProps you're actually telling the Button to create a FontAwesome icon, and you then pass those props to that icon. The properties to pass to your (FontAwesome) icon. You can pass [any prop](https://github.com/oblador/react-native-vector-icons#properties-1) that you could pass on `react-native-vector-icons` (If you use that, you should NOT use `customIcon`) |
 | ``textStyle`` | ``TextStylePropTypes`` | The StyleSheet to apply to the inner button text. |
 | ``disabledStyle`` | ``TextStylePropTypes`` | The StyleSheet to apply when disabled. |
 | ``children`` | ``string`` | The ``string`` to render as the text button. |

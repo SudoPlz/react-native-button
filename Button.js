@@ -1,7 +1,7 @@
 'use strict';
 
-var React = require('react-native');
-var {
+import React from 'react';
+import {
   View,
   TouchableOpacity,
   Text,
@@ -11,34 +11,21 @@ var {
   ProgressBarAndroid,
   TouchableNativeFeedback,
   Platform
-} = React;
-var Icon = require('react-native-vector-icons/FontAwesome');
-var Button = React.createClass({
-  propTypes: Object.assign({},
-    {
-      customIcon: PropTypes.func,
-      iconProps: PropTypes.object,
-      iconStyle: View.propTypes.style,
-      iconContainerStyle: View.propTypes.style,
-      textStyle: Text.propTypes.style,
-      disabledStyle: Text.propTypes.style,
-      children: PropTypes.string,
-      isLoading: PropTypes.bool,
-      isDisabled: PropTypes.bool,
-      activityIndicatorColor: PropTypes.string,
-      onPress: PropTypes.func,
-      onLongPress: PropTypes.func,
-      onPressIn: PropTypes.func,
-      onPressOut: PropTypes.func,
-      background: (TouchableNativeFeedback.propTypes) ? TouchableNativeFeedback.propTypes.background : PropTypes.any,
-    },
-  ),
+} from 'react-native'
 
-  statics: {
-    isAndroid: (Platform.OS === 'android'),
-  },
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-  _renderInnerTextAndroid: function (styles) {
+
+
+class SPButton extends React.Component {
+
+
+
+  isAndroid(){
+    return (Platform.OS === 'android');
+  }
+
+  _renderInnerTextAndroid (styles) {
     if (this.props.isLoading) {
       return (
         <ProgressBarAndroid
@@ -49,14 +36,11 @@ var Button = React.createClass({
           color={this.props.activityIndicatorColor || 'black'}
         />
       );
-    }
-
-    
+    }   
     return this._renderTextIfNeeded(styles);
+  }
 
-  },
-
-  _renderTextIfNeeded: function(styles){
+  _renderTextIfNeeded(styles){
     if(!!this.props.children){
       return (
       <Text style={[styles.textButton, this.props.textStyle]}>
@@ -68,12 +52,11 @@ var Button = React.createClass({
       <View></View>
     );  
     }
-  },
+  }
 
 
 
-
-  _renderIconIfNeeded: function(styles){
+  _renderIconIfNeeded(styles){
     if(!!this.props.customIcon){
       return <View style={[styles.btnIcon, this.props.iconContainerStyle]}>{this.props.customIcon()}</View>;
     }else if(!!this.props.iconProps){
@@ -81,9 +64,9 @@ var Button = React.createClass({
     }else{
       return <View></View>;
     }
-  },
+  }
 
-  _renderInnerTextiOS: function (styles) {
+  _renderInnerTextiOS (styles) {
     if (this.props.isLoading) {
       return (
         <ActivityIndicatorIOS
@@ -96,14 +79,14 @@ var Button = React.createClass({
     }
 
     return this._renderTextIfNeeded(styles);
-  },
+  }
 
-  _renderInnerText: function (styles) {
-    if (Button.isAndroid) {
+  _renderInnerText (styles) {
+    if (this.isAndroid()) {
       return this._renderInnerTextAndroid(styles)
     }
     return this._renderInnerTextiOS(styles)
-  },
+  }
 
   getStyles(props){
 
@@ -157,9 +140,9 @@ var Button = React.createClass({
         opacity: 0.5,
       },
     });
-  },
+  }
 
-  render: function () {
+  render() {
     let styles = this.getStyles(this.props);
     if (this.props.isDisabled === true || this.props.isLoading === true) {
       return (
@@ -175,7 +158,7 @@ var Button = React.createClass({
         onPressOut: this.props.onPressOut,
         onLongPress: this.props.onLongPress
       };
-      if (Button.isAndroid) {
+      if (this.isAndroid()) {
         touchableProps = Object.assign(touchableProps, {
           background: this.props.background || TouchableNativeFeedback.SelectableBackground()
         });
@@ -215,9 +198,23 @@ var Button = React.createClass({
       }
     }
   }
+}
 
-
-});
-
-
-module.exports = Button;
+SPButton.propTypes = {
+  customIcon: React.PropTypes.func,
+  iconProps: React.PropTypes.object,
+  iconStyle: React.PropTypes.style,
+  iconContainerStyle: React.PropTypes.style,
+  textStyle: React.PropTypes.style,
+  disabledStyle: React.PropTypes.style,
+  children: React.PropTypes.string,
+  isLoading: React.PropTypes.bool,
+  isDisabled: React.PropTypes.bool,
+  activityIndicatorColor: React.PropTypes.string,
+  onPress: React.PropTypes.func,
+  onLongPress: React.PropTypes.func,
+  onPressIn: React.PropTypes.func,
+  onPressOut: React.PropTypes.func,
+  background: (TouchableNativeFeedback.propTypes) ? TouchableNativeFeedback.propTypes.background : React.PropTypes.any,
+}   
+export default SPButton;
