@@ -7,7 +7,7 @@ import {
   Text,
   StyleSheet,
   PropTypes,
-  ActivityIndicatorIOS,
+  ActivityIndicator,
   ProgressBarAndroid,
   TouchableNativeFeedback,
   Platform
@@ -15,35 +15,76 @@ import {
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+const DEFAULT_BUTTON_HEIGHT = 44;
 
+const styles = StyleSheet.create({
+  
+  
+  spinner: {
+    alignSelf: 'center',
+  },
+  opacity: {
+    opacity: 0.5,
+  },
+
+
+
+  button: {
+    flexDirection: 'column',
+    borderWidth: 1,
+    borderRadius: 8,
+
+    // marginBottom: 10,
+    justifyContent: 'center',
+    alignItems:'center',
+  },
+
+
+  //icon
+  iconContainer:{
+    top: 0,
+    // flex:1,
+    // backgroundColor:'yellow',
+    position: 'absolute',
+    justifyContent:'center',
+    paddingHorizontal: 10
+  },
+  
+
+  //text
+  textContainer:{
+    // backgroundColor:'pink',
+    justifyContent: 'center',
+  },
+
+  text: {
+    fontSize: 18,
+    // backgroundColor: 'red'
+  },
+});
 
 class SPButton extends React.Component {
 
-
-
-  isAndroid(){
-    return (Platform.OS === 'android');
+  constructor(props){
+    super(props);
+    this.buttonHeight = DEFAULT_BUTTON_HEIGHT;
   }
 
-  _renderInnerTextAndroid (styles) {
-    if (this.props.isLoading) {
-      return (
-        <ProgressBarAndroid
-          style={[{
-            height: 20,
-          }, styles.spinner]}
-          styleAttr='Inverse'
-          color={this.props.activityIndicatorColor || 'black'}
-        />
-      );
-    }   
-    return this._renderTextIfNeeded(styles);
+  componentWillMount(){
+    if(this.props.style!=null){
+      if(this.props.style.height!=null){
+        this.buttonHeight = this.props.style.height;
+      }
+    }
   }
 
-  _renderTextIfNeeded(styles){
+  
+
+
+  _renderTextIfNeeded(){
     if(!!this.props.children){
       return (
-      <Text style={[styles.textButton, this.props.textStyle]}>
+      <Text style={[styles.text, this.props.textStyle]}>
         {this.props.children}
       </Text>
     );  
@@ -56,97 +97,47 @@ class SPButton extends React.Component {
 
 
 
-  _renderIconIfNeeded(styles){
+  _renderIconIfNeeded(){
     if(!!this.props.customIcon){
-      return <View style={[styles.btnIcon, this.props.iconContainerStyle]}>{this.props.customIcon()}</View>;
+      return <View style={[styles.iconContainer, {height: this.buttonHeight}, this.props.iconContainerStyle]}>{this.props.customIcon()}</View>;
     }else if(!!this.props.iconProps){
-      return <View style={[styles.btnIcon, this.props.iconContainerStyle]}><Icon style={this.props.iconStyle} {...this.props.iconProps}></Icon></View>;
+      return <View style={[styles.iconContainer, {height: this.buttonHeight}, this.props.iconContainerStyle]}><Icon style={this.props.iconStyle} {...this.props.iconProps}></Icon></View>;
     }else{
       return <View></View>;
     }
   }
 
-  _renderInnerTextiOS (styles) {
+  _renderInnerText () {
     if (this.props.isLoading) {
       return (
-        <ActivityIndicatorIOS
+        <View style={styles.textContainer}>
+          <ActivityIndicator
           animating={true}
           size='small'
           style={styles.spinner}
           color={this.props.activityIndicatorColor || 'black'}
-        />
+          {...this.props.activityIndicatorProps}
+        />        
+        </View>
+        
       );
     }
 
-    return this._renderTextIfNeeded(styles);
+    return (
+      <View style={styles.textContainer}>
+        {this._renderTextIfNeeded()}
+      </View>
+      )
   }
+ 
 
-  _renderInnerText (styles) {
-    if (this.isAndroid()) {
-      return this._renderInnerTextAndroid(styles)
-    }
-    return this._renderInnerTextiOS(styles)
-  }
 
-  getStyles(props){
-
-    let iconSize = null;
-    if(props.iconProps && props.iconProps.size){
-      iconSize = props.iconProps.size;
-    }
-    
-    return StyleSheet.create({
-      touchableContainerView:{
-        flex:1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        // backgroundColor:'black'
-      },
-      rowContainer:{
-        flex: 1,
-        flexDirection: 'column'
-      },
-      rowItem:{
-        flex: 1,
-        width: !!this.props.children?null:iconSize*2,
-        height: !!this.props.children?null:iconSize*2,
-        justifyContent: 'center'
-      },
-
-      btnIcon:{
-        // backgroundColor: 'red',
-        position: 'absolute',
-        paddingHorizontal: 10
-      },
-      button: {
-        height: 44,
-        flexDirection: 'row',
-        borderWidth: 1,
-        borderRadius: 8,
-        // marginBottom: 10,
-        alignSelf: 'stretch',
-        justifyContent: 'center',
-      },
-
-      textButton: {
-        fontSize: 18,
-        alignSelf: 'center'
-        // backgroundColor: 'yellow'
-      },
-      spinner: {
-        alignSelf: 'center',
-      },
-      opacity: {
-        opacity: 0.5,
-      },
-    });
-  }
 
   render() {
-    let styles = this.getStyles(this.props);
+    // let styles = this.getStyles(this.props);
     if (this.props.isDisabled === true || this.props.isLoading === true) {
       return (
-        <View style={[styles.button, this.props.style, (this.props.disabledStyle || styles.opacity)]}>
+        <View style={[styles.button, {height: this.buttonHeight}, this.props.style, (this.props.disabledStyle || styles.opacity)]}>
           {this._renderInnerText(styles)}
         </View>
       );
@@ -158,41 +149,25 @@ class SPButton extends React.Component {
         onPressOut: this.props.onPressOut,
         onLongPress: this.props.onLongPress
       };
-      if (this.isAndroid()) {
+      if (Platform.OS === 'android') {
         touchableProps = Object.assign(touchableProps, {
           background: this.props.background || TouchableNativeFeedback.SelectableBackground()
         });
       
         return (
           <TouchableNativeFeedback {...touchableProps} >
-            <View style={[styles.button, this.props.style]}>
-              <View style={styles.touchableContainerView} >
-                <View style={styles.rowContainer}>
-                  <View style={styles.rowItem}>
-                    {this._renderIconIfNeeded(styles)}
-                  </View>
-                  <View style={styles.rowItem}>
-                    {this._renderInnerTextAndroid(styles)}
-                  </View>
-                </View>
-              </View>
+            <View style={[styles.button, {height: this.buttonHeight}, this.props.style]}>
+              {this._renderInnerText()}
+              {this._renderIconIfNeeded()}
             </View> 
           </TouchableNativeFeedback>
         )
       } else {
         return (
           <TouchableOpacity {...touchableProps}
-            style={[styles.button, this.props.style]}>
-            <View style={styles.touchableContainerView} >
-                <View style={styles.rowContainer}>
-                  <View style={styles.rowItem}>
-                    {this._renderIconIfNeeded(styles)}
-                  </View>
-                  <View style={styles.rowItem}>
-                    {this._renderInnerTextiOS(styles)}
-                  </View>
-                </View>
-            </View>
+            style={[styles.button, {height: this.buttonHeight}, this.props.style]}>
+              {this._renderInnerText()}
+              {this._renderIconIfNeeded()}
           </TouchableOpacity>
         );
       }
@@ -200,17 +175,30 @@ class SPButton extends React.Component {
   }
 }
 
+
 SPButton.propTypes = {
+  buttonHeight: React.PropTypes.number,
+  buttonWidth: React.PropTypes.number,
+
+  //icon props
   customIcon: React.PropTypes.func,
   iconProps: React.PropTypes.object,
   iconStyle: View.propTypes.style,
   iconContainerStyle: View.propTypes.style,
+  //text styles
   textStyle: Text.propTypes.style,
+  //view styles
   disabledStyle: View.propTypes.style,
+
+  //spinner props
+  activityIndicatorColor: React.PropTypes.string,
+  activityIndicatorProps: React.PropTypes.object,
+
   children: React.PropTypes.string,
   isLoading: React.PropTypes.bool,
   isDisabled: React.PropTypes.bool,
-  activityIndicatorColor: React.PropTypes.string,
+  
+  //callbacks
   onPress: React.PropTypes.func,
   onLongPress: React.PropTypes.func,
   onPressIn: React.PropTypes.func,

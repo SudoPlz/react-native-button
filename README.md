@@ -32,6 +32,10 @@ Import the ``Button`` component:
 import Button from 'sp-react-native-iconbutton'
 ```
 
+###Caution: This library is now compatible for react-native 29 and onwards.
+Thats because it uses the `ActivityIndicator` which does not exist in previous versions of react-native.
+If you wish to run it in previous react-native versions you will have to use the branch called `pre29`.
+
 ## Usage
 
 Provide ``TouchableWithoutFeedback``' props to the component (including ``style``),
