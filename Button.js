@@ -54,10 +54,12 @@ const styles = StyleSheet.create({
   //text
   textContainer:{
     // backgroundColor:'pink',
+    // flex:1,
     justifyContent: 'center',
   },
 
   text: {
+    flexWrap: 'nowrap',
     fontSize: 18,
     // backgroundColor: 'red'
   },
@@ -67,14 +69,16 @@ class SPButton extends React.Component {
 
   constructor(props){
     super(props);
-    this.buttonHeight = DEFAULT_BUTTON_HEIGHT;
   }
 
   componentWillMount(){
     if(this.props.style!=null){
-      if(this.props.style.height!=null){
-        this.buttonHeight = this.props.style.height;
-      }
+      let curStyle = StyleSheet.flatten([this.props.style])
+    if(curStyle.height!=null){
+      this.buttonHeight = curStyle.height;
+    }
+    }else{
+      this.buttonHeight = DEFAULT_BUTTON_HEIGHT;
     }
   }
 
@@ -99,6 +103,7 @@ class SPButton extends React.Component {
 
   _renderIconIfNeeded(){
     if(!!this.props.customIcon){
+      console.log("Button height: "+this.buttonHeight);
       return <View style={[styles.iconContainer, {height: this.buttonHeight}, this.props.iconContainerStyle]}>{this.props.customIcon()}</View>;
     }else if(!!this.props.iconProps){
       return <View style={[styles.iconContainer, {height: this.buttonHeight}, this.props.iconContainerStyle]}><Icon style={this.props.iconStyle} {...this.props.iconProps}></Icon></View>;
